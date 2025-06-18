@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname,"/public")));
 
 // const dbUrl="mongodb://127.0.0.1:27017/UPIslice";
 
-const dbUrl=process.env.ATLASDB_URL;
+const dbUrl=process.env.ATLASDB_URLN;
 
 const store=MongoStore.create({
     mongoUrl:dbUrl,
