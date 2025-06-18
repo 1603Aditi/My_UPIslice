@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+  .success-container {
+    margin-top: 100px;
+    text-align: center;
+  }
+
+  .success-icon {
+    font-size: 60px;
+    color: green;
+  }
+
+  .message {
+    font-size: 24px;
+    color: #333;
+    margin-top: 20px;
+  }
+
+  .btn-back {
+    margin-top: 30px;
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+
+  .btn-back:hover {
+    background-color: rgb(255, 98, 0);
+  }
+</style>
+
+<div class="container success-container">
+  <div class="success-icon">
+    <i class="fa-solid fa-circle-check"></i>
+  </div>
+
+  <div class="message">
+    Email sent successfully to your friends!
+  </div>
+  <br>
+  <a href="/main" class="btn-back">Back to Dashboard</a>
+</div>

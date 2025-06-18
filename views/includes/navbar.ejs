@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<style>
+  .navbar-nav .nav-link:hover {
+    color: rgb(255, 140, 0) !important;
+  }
+  .navbar-nav .auth-link:hover {
+    color: rgb(0, 110, 255) !important;
+    text-decoration: none !important;
+  }
+  
+  .navbar-brand {
+     color: rgb(255, 102, 0) !important;
+     padding-left: 25px;
+  }
+
+</style>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><i class="fa-solid fa-pizza-slice"></i><b>UPIslice</b> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <a class="nav-link" href="/explore"><b>Explore</b></a>
+
+        </div>
+
+      <div class="navbar-nav ms-auto">
+      <% if(!currUser){ %>
+        <a class="nav-link auth-link" aria-current="page" href="/signup" style="background-color: rgb(252, 227, 195) !important;"><b>Signup</b></a>
+      <a class="nav-link auth-link" href="/login" style="background-color: rgb(252, 227, 195);"><b>Login</b></a>
+      <% } else { %>
+       <a class="nav-link auth-link" href="/logout" style="background-color: rgb(252, 227, 195) !important;"><b>Logout</b></a>
+        <a class="nav-link" href="/account"style="background-color: rgb(252, 227, 195) !important;">
+      <b><i class="fa-solid fa-user me-1"></i> <%= currUser.username %></b>
+    </a>
+  <% } %>
+</div>
+
+      </div>
+    </div>
+  </nav>

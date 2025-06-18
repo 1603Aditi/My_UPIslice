@@ -1,0 +1,24 @@
+<% layout('layouts/boilerplate') %>
+<div class="container mt-5">
+  <h2>Bill Summary</h2>
+  <p><strong>Total Amount:</strong> ₹<%= bill.totalAmount.toFixed(2) %></p>
+
+  <h4>Participants & Shares:</h4>
+<ul class="list-group">
+  <% bill.participants.forEach(p => { %>
+    <% if (p.friendId) { %> 
+      <li class="list-group-item d-flex justify-content-between">
+        <span><%= p.friendId.name %></span>
+        <span>₹<%= p.shareAmount.toFixed(2) %></span>
+      </li>
+    <% } %>
+  <% }) %>
+</ul>
+
+  
+  <form action="/bills/send-mails/<%= bill._id %>" method="POST">
+  <button type="submit" class="btn btn-primary mt-4">Send E-mail</button>
+</form>
+
+
+</div>

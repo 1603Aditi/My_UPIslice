@@ -1,0 +1,120 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+  body {
+    background-color: beige;
+    background-position: center;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .main-title {
+    font-size: 50px;
+    font-weight: 700;
+    color: orangered;
+    margin-top: 80px;
+    text-align: center;
+  }
+
+  .tagline {
+    font-size: 24px;
+    color: rgb(77, 77, 77);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  #cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+
+  .cta-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: orange;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .cta-btn:hover {
+    background-color: orangered;
+  }
+
+  .features {
+    margin: 60px auto;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .feature-card {
+    width: 250px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .feature-card i {
+    font-size: 40px;
+    color: orangered;
+    margin-bottom: 10px;
+  }
+
+  .feature-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+  footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 15px;
+    font-size: 14px;
+    color: gray;
+  }
+
+</style>
+
+<body>
+  <div class="container">
+    <h1 class="main-title">Welcome to UPIslice!</h1>
+    <p class="tagline">Dosti Yaari Pakki, Paisa Apna Apna</p>
+
+    <div id="cta-buttons">
+      <% if (!user) { %>
+        <a href="/login" class="cta-btn">Login</a>
+        <a href="/signup" class="cta-btn">Sign Up</a>
+      <% } else { %>
+        <a href="/main" class="cta-btn">Go to Dashboard</a>
+      <% } %>
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <i class="fa-solid fa-users"></i>
+        <h5>Add Friends</h5>
+        <p>Save and manage your friends for faster bill splitting.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fa-solid fa-receipt"></i>
+        <h5>Split Bills</h5>
+        <p>Upload bills and split expenses equally or unevenly.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fa-solid fa-envelopes-bulk"></i>
+        <h5>Send Mails</h5>
+        <p>Send mails to friends who owe you.</p>
+      </div>
+    </div>
+
+  </div>
+</body>

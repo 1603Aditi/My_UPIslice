@@ -1,0 +1,59 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container mt-5">
+  <h3>Review Extracted Items</h3><br>
+
+  <!-- Info Alert about Split Style -->
+  <% if (splitType === 'equal') { %>
+    <div class="alert alert-info">
+      Split Style: <strong>50-50</strong> — The bill will be equally divided among all selected friends and you..
+    </div>
+  <% } else if (splitType === 'dutch') { %>
+    <div class="alert alert-warning">
+      Split Style: <strong>Dutch</strong> — Select who is responsible for each item.
+    </div>
+  <% } %>
+
+  <form action="/bills/confirm" method="POST">
+    <input type="hidden" name="split-style" value="<%= splitType %>">
+
+    <% items.forEach((item, idx) => {
+      const lower = item.name.toLowerCase();
+      if (lower.includes('total') || lower.includes('grand')) return;
+    %>
+      <div class="mb-4">
+        <label class="form-label">
+          <strong><%= item.name %> — ₹<%= item.price.toFixed(2) %></strong>
+        </label>
+
+        <% if (splitType !== 'equal') { %>
+          <!-- Show checkboxes for Dutch style -->
+          <div class="form-check">
+            <% fullList.forEach(friend => { %>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" 
+                       name="assignedTo[<%= idx %>][]" 
+                       value="<%= friend._id %>" 
+                       id="item<%= idx %>_<%= friend._id %>">
+                <label class="form-check-label" for="item<%= idx %>_<%= friend._id %>">
+                  <%= friend.name %>
+                </label>
+              </div>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <!-- Assign all by default in 50-50 split using hidden fields -->
+          <% fullList.forEach(friend => { %>
+            <input type="hidden" name="assignedTo[<%= idx %>][]" value="<%= friend._id %>">
+          <% }) %>
+        <% } %>
+
+        <!-- Hidden fields for item name & price -->
+        <input type="hidden" name="itemNames[]" value="<%= item.name %>">
+        <input type="hidden" name="itemPrices[]" value="<%= item.price %>">
+      </div>
+    <% }) %>
+
+    <button type="submit" class="btn btn-success">Confirm Split</button>
+  </form>
+</div>

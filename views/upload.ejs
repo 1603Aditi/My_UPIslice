@@ -1,0 +1,46 @@
+<% layout('layouts/boilerplate') %>
+<div class="container mt-5">
+  <h3 class="mb-4">Upload a Bill</h3>
+<form action="/bills/new" method="POST" enctype="multipart/form-data">
+  <!-- Bill Description -->
+  
+   <div class="mb-3">
+  <label for="split-style" class="form-label">Split Style</label>
+  <select class="form-select" id="split-style" name="split-style" required>
+    <option value="" disabled selected>Split Style</option>
+    <option value="equal">50-50</option>
+    <option value="dutch">Dutch</option>
+  </select>
+</div>
+
+  <!-- Shared With -->
+  <div class="mb-3">
+  <label class="form-label">Shared With</label>
+  <div class="form-check">
+    <% friends.forEach(friend => { %>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="sharedWith[]"  
+          value="<%= friend._id %>"
+          id="friend-<%= friend._id %>"
+        />
+        <label class="form-check-label" for="friend-<%= friend._id %>">
+          <%= friend.name %> (<%= friend.email %>)
+        </label>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+  <!-- Bill Image Upload -->
+  <div class="mb-3">
+    <label for="billImage" class="form-label">Upload Bill Image</label>
+    <input type="file" class="form-control" id="billImage" name="billImage" accept="image/*" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Upload Bill</button>
+</form>
+</div>
+

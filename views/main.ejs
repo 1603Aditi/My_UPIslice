@@ -1,0 +1,103 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+  #friend {
+    border-radius: 15px;
+  }
+
+  #add-friend {
+    border-radius: 15px;
+    margin-top: 10px;
+     background-color:rgb(255, 128, 0);
+     border-color:rgb(255, 128, 0);
+  }
+#upload-bill {
+    border-radius: 15px;
+    margin-top: 10px;
+    background-color:rgb(255, 128, 0);
+     border-color:rgb(255, 128, 0);
+  }
+
+  #friend-form {
+    display: none;
+    margin-top: 10px;
+  }
+
+  
+  #friend-list .list-group-item {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+  }
+
+
+</style>
+
+<br>
+<body>
+  <div class="container mt-4">
+    <h2 style="color: rgb(255, 89, 0);" class="mb-4">Welcome, <%= currentUser.username %> :)</h2>
+
+    <h4>Your Friends</h4>
+
+    <% if (friends.length === 0) { %>
+      <p class="text-muted">No friends added yet.</p>
+    <% } else { %>
+      <ul class="list-group" id="friend-list" style="max-width: 500px;">
+        <% friends.forEach(friend => { %>
+         <li class="list-group-item d-flex justify-content-between align-items-center">
+  <div>
+    <i class="fa-solid fa-user me-2 text-primary"></i> 
+    <strong><%= friend.name %></strong><br>
+    <small class="text-muted"><%= friend.email %></small>
+  </div>
+  
+  <div class="d-flex gap-2">
+    <a href="/friends/<%= friend._id %>/edit" class="btn btn-sm btn-light border">
+      <i class="fa-solid fa-pen text-primary"></i>
+    </a>
+    <form action="/friends/<%= friend._id %>?_method=DELETE" method="POST" style="display:inline;">
+      <button type="submit" class="btn btn-sm btn-light border">
+        <i class="fa-solid fa-trash text-danger"></i>
+      </button>
+    </form>
+  </div>
+</li>
+
+         
+        <% }) %>
+      </ul>
+    <% } %>
+  </div>
+
+    <button id="add-friend" class="btn btn-primary">Add more friends..</button>
+    <br>
+    <a href="/bills" class="btn btn-primary" id="upload-bill">Upload Bill</a>
+
+
+
+    <!-- Hidden Friend Form -->
+    <form id="friend-form" action="/friends/add" method="POST">
+      <div class="mb-2">
+        <input type="text" name="name" placeholder="Friend's Name" class="form-control" required>
+      </div>
+      <div class="mb-2">
+        <input type="email" name="email" placeholder="Friend's Email" class="form-control" required>
+      </div>
+      
+      <button type="submit" class="btn btn-success">Save Friend</button>
+    </form>
+
+    <hr>
+  </div>
+
+ 
+  <script>
+    const addFriendBtn = document.getElementById('add-friend');
+    const friendForm = document.getElementById('friend-form');
+
+    addFriendBtn.addEventListener('click', () => {
+      friendForm.style.display = friendForm.style.display === 'none' ? 'block' : 'none';
+    });
+  </script>
+</body>

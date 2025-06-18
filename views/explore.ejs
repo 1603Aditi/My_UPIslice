@@ -1,0 +1,61 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+  .feature-card {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: scale(1.05);
+    background-color: #ffe5cc;
+  }
+
+  .feature-title {
+    color: orangered;
+    font-weight: bold;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+</style>
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4" style="color: orangered;">Explore UPIslice</h1>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <h4 class="feature-title">Add Friends</h4>
+      <p>Add friends using name, email, and phone. Avoid duplicates using validation.</p>
+    </div>
+
+    <div class="feature-card">
+      <h4 class="feature-title">Upload Bills</h4>
+      <p>Upload bill items with prices and assign them to friends.</p>
+    </div>
+
+    <div class="feature-card">
+      <h4 class="feature-title">Smart Split</h4>
+      <p>Split equally or Dutch — auto calculates and assigns share to friends.</p>
+    </div>
+
+    <div class="feature-card">
+      <h4 class="feature-title">Email Notification</h4>
+      <p>Friends are notified by email when a bill is assigned to them.</p>
+    </div>
+
+    <div class="feature-card">
+      <h4 class="feature-title">Summary View</h4>
+      <p>Get clear breakdown of items, shares, and total amount with UPI info.</p>
+    </div>
+  </div>
+  <br>
+  <a href="/" class="btn btn-warning">Back to Dashboard</a>
+
+</div>

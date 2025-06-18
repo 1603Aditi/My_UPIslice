@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') %>
+
+<style>
+  .custom-btn {
+    background-color: orange;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .custom-btn:hover {
+    background-color: darkorange;
+    color: white;
+  }
+</style>
+
+<div class="container mt-4">
+  <h2 class="mb-4 rb-4">Your Information</h2>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Username:</strong> <%= currUser.username %></li><br>
+    <li class="list-group-item"><strong>Email:</strong> <%= currUser.email %></li><br>
+    <li class="list-group-item"><strong>Phone Number:</strong> <%= currUser.phoneno %></li><br>
+    <li class="list-group-item"><strong>UPI ID:</strong> <%= currUser.upiId %></li><br>
+  </ul>
+
+  <div class="mt-4 d-flex gap-3">
+    <a href="/account/edit" class="custom-btn">Edit Info</a>
+    <a href="/main" class="custom-btn">Back</a>
+  </div>
+</div>

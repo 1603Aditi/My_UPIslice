@@ -1,0 +1,30 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container mt-4">
+  <h2 class="mb-4">Edit Your Information</h2>
+
+  <form action="/account/edit" method="POST">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" name="username" value="<%= currUser.username %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" value="<%= currUser.email %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="phoneno" class="form-label">Phone Number</label>
+      <input type="text" class="form-control" id="phoneno" name="phoneno" value="<%= currUser.phoneno %>">
+    </div>
+
+    <div class="mb-3">
+      <label for="upiId" class="form-label">UPI ID</label>
+      <input type="text" class="form-control" id="upiId" name="upiId" value="<%= currUser.upiId %>">
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Changes</button>
+    <a href="/main" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>
